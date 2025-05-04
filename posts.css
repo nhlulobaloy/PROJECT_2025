@@ -1,0 +1,653 @@
+/* ===== GLOBAL STYLES ===== */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    overflow-x: hidden;
+    line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* ===== FOCUS ENHANCEMENTS (NEW ADDITIONS) ===== */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+a:focus,
+[tabindex="0"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5);
+    border-radius: 4px;
+}
+
+@supports (-webkit-touch-callout: none) {
+    /* iOS tap highlight */
+    button:active,
+    input:active,
+    textarea:active {
+        -webkit-tap-highlight-color: rgba(52, 152, 219, 0.3);
+    }
+}
+
+@supports (-moz-touch-enabled: none) {
+    /* Samsung focus ring */
+    button:-moz-focusring,
+    input:-moz-focusring {
+        box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5);
+    }
+}
+
+/* ===== LAYOUT STRUCTURE (ORIGINAL) ===== */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #2f3542;
+    padding: 20px;
+    color: #fff;
+    position: fixed;
+    height: 100vh;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    max-width: 100%;
+}
+
+/* ===== HEADER & SEARCH (ORIGINAL) ===== */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 32px;
+    color: #2f3542;
+    margin: 0;
+}
+
+header p {
+    font-size: 18px;
+    color: #555;
+    margin: 10px 0 0;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+#search-bar {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    width: 40%;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+#search-bar:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+#search-criteria {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    background-color: #fff;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+    outline: none;
+    width: 25%;
+}
+
+#search-criteria:hover {
+    background-color: #3498db;
+    color: white;
+}
+
+#search-criteria:focus {
+    border-color: #3498db;
+    background-color: #2980b9;
+    color: white;
+}
+
+/* ===== POST STYLES (ORIGINAL) ===== */
+.feed-section {
+    margin-top: 30px;
+    width: 100%;
+}
+
+.post {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto 20px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 600px;
+}
+
+.post:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.post-user-img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 2px solid #eee;
+}
+
+.post-header strong {
+    font-size: 17px;
+    color: #333;
+    font-weight: 600;
+}
+
+.post-meta {
+    font-size: 13px;
+    color: #777;
+    margin-top: 2px;
+}
+
+.post-content {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+    margin: 15px 0;
+}
+
+.post-media {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 8px;
+    margin: 15px auto;
+    display: block;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.like-btn,
+.comment-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.like-btn:hover,
+.comment-btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.like-btn i,
+.comment-btn i {
+    margin-right: 8px;
+}
+
+.like-btn {
+    margin-right: 15px;
+}
+
+.more-options {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+.more-options-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #777;
+    transition: all 0.3s ease;
+}
+
+.more-options-btn:hover {
+    color: #333;
+    transform: rotate(90deg);
+}
+
+.options-menu {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    width: 150px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.options-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.options-menu li {
+    padding: 8px 15px;
+    transition: all 0.2s ease;
+}
+
+.options-menu li:hover {
+    background-color: #f5f5f5;
+}
+
+.options-menu li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    display: block;
+}
+
+/* ===== COMMENT SECTION (ORIGINAL + ENHANCEMENTS) ===== */
+.comment-section {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-top: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-height: 700px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* Added for iOS */
+}
+
+.comment {
+    display: flex;
+    flex-direction: column;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.comment:focus-within { /* Added focus state */
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3);
+}
+
+.comment:hover {
+    background-color: #f0f0f0;
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.comment-user-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.comment-user-info {
+    flex-grow: 1;
+}
+
+.comment-header strong {
+    font-size: 15px;
+    color: #333;
+    font-weight: 600;
+    display: block;
+}
+
+.comment-date {
+    font-size: 12px;
+    color: #888;
+    margin-top: 2px;
+}
+
+.comment-content {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin: 10px 0;
+    padding-left: 55px;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.comment-media {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin: 10px 0 0 55px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comment-actions {
+    display: flex;
+    margin-top: 10px;
+    padding-left: 55px;
+}
+
+.comment-action-btn {
+    background: none;
+    border: none;
+    color: #3498db;
+    font-size: 13px;
+    cursor: pointer;
+    margin-right: 15px;
+    padding: 5px 0;
+    transition: all 0.2s ease;
+}
+
+.comment-action-btn:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+/* ===== REPLY SECTION (ORIGINAL) ===== */
+.replies-container {
+    margin-top: 10px;
+    padding-left: 30px;
+    border-left: 2px solid #ddd;
+}
+
+.reply {
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f0f0;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.reply:hover {
+    background-color: #e8e8e8;
+}
+
+.reply-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.reply-user-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.reply-header strong {
+    font-size: 14px;
+    color: #333;
+    font-weight: 600;
+}
+
+.reply-date {
+    font-size: 11px;
+    color: #888;
+    margin-top: 2px;
+}
+
+.reply-content {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.5;
+    margin: 8px 0;
+    padding-left: 44px;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.toggle-replies-btn {
+    background: none;
+    border: none;
+    color: #3498db;
+    font-size: 13px;
+    cursor: pointer;
+    padding: 5px 0;
+    margin: 5px 0 0 55px;
+    transition: all 0.2s ease;
+}
+
+.toggle-replies-btn:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+/* ===== COMMENT FORM (ORIGINAL + ENHANCEMENTS) ===== */
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    position: sticky;
+    bottom: 0;
+    background-color: white;
+    padding: 15px;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    z-index: 5;
+}
+
+.comment-form textarea {
+    width: 100%;
+    min-height: 80px;
+    font-size: 14px;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    resize: vertical;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    -webkit-appearance: none; /* Added for iOS */
+}
+
+.comment-form textarea:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+    outline: none;
+}
+
+.comment-form-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.comment-form button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.comment-form button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* ===== UTILITY CLASSES (ORIGINAL) ===== */
+.hidden {
+    display: none !important;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+/* ===== RESPONSIVE DESIGN (ORIGINAL + ENHANCEMENTS) ===== */
+@media (max-width: 992px) {
+    .sidebar {
+        width: 220px;
+    }
+    .main-content {
+        margin-left: 220px;
+        width: calc(100% - 220px);
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 15px;
+    }
+    
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 15px;
+    }
+    
+    .post {
+        max-width: 100%;
+    }
+    
+    #search-bar {
+        width: 60%;
+    }
+    
+    #search-criteria {
+        width: 35%;
+    }
+    
+    .comment-content,
+    .comment-actions,
+    .toggle-replies-btn {
+        padding-left: 0;
+    }
+    
+    .comment-media {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .search-container {
+        flex-direction: column;
+    }
+    
+    #search-bar,
+    #search-criteria {
+        width: 100%;
+        margin: 5px 0;
+    }
+    
+    .post-actions {
+        flex-direction: column;
+    }
+    
+    .like-btn {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .comment-section {
+        padding: 15px;
+        max-height: 60vh; /* Adjusted for mobile */
+    }
+    
+    .comment-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .comment-user-img {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .comment-content {
+        padding-left: 0;
+    }
+    
+    .replies-container {
+        padding-left: 15px;
+    }
+}
+
+/* ===== DEVICE-SPECIFIC FIXES (NEW ADDITIONS) ===== */
+/* iPhone XR/11 Focus Fix */
+@media only screen 
+    and (device-width: 414px) 
+    and (device-height: 896px) 
+    and (-webkit-device-pixel-ratio: 2) {
+    button:active,
+    input:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Samsung S24 Ultra Focus Fix */
+@media only screen 
+    and (min-width: 412px) 
+    and (max-width: 500px) 
+    and (-webkit-min-device-pixel-ratio: 3.5) {
+    textarea:focus {
+        border-width: 2px;
+    }
+}

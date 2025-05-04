@@ -1,0 +1,81 @@
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background-color: #2f3542;
+    padding: 20px;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    background-color: #1d2430;
+}
+
+/* Sidebar should be visible on larger screens */
+@media (min-width: 768px) {
+    .sidebar {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100vh;
+        background-color: #2f3542;
+        padding: 20px;
+        z-index: 1000;
+        transition: left 0.3s ease; /* Slide-in transition */
+    }
+}
+
+/* Hide sidebar on smaller screens initially */
+@media (max-width: 767px) {
+    .sidebar {
+        display: none; /* Initially hidden */
+        position: fixed;
+        top: 0;
+        left: -250px; /* Sidebar starts off-screen */
+        width: 250px;
+        height: 100vh;
+        background-color: #2f3542;
+        padding: 20px;
+        z-index: 1000;
+        transition: left 0.3s ease; /* Sliding effect */
+    }
+
+    /* Sidebar becomes visible when 'active' class is added */
+    .sidebar.active {
+        left: 0; /* Slide in */
+        display: block;
+    }
+}

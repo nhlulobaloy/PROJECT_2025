@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShowMe</title>
+    <link rel="stylesheet" href="styleforhome.css">
+</head>
+<body>
+    <header>
+        <h1 id="head">ShowMe</h1>
+        <!-- Hamburger Icon -->
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        
+        <!-- Navigation Menu -->
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#discover">Discover</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#">Artists</a></li>
+                <li><a href="#">Gigs</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <h2>Discover South African Music Talent</h2>
+        <p>Connect, collaborate, and share your talent with the ShowMe community!</p>
+        <button><a href="signup.html">Join Now</a></button>
+    </section>
+
+    <section id="discover">
+        <h2>Discover Artists</h2>
+        <p class="text">Explore a wide variety of South African musicians, DJs, and dancers from all genres.</p>
+        <div class="discover-container">
+            <div class="card">
+                <img src="firstpic.jpeg" alt="Artist 1">
+                <p>DJ Maphorisa</p>
+            </div>
+            <div class="card">
+                <img src="secondpic.webp" alt="Artist 2">
+                <p>Dumi Mkokstad</p>
+            </div>
+            <div class="card">
+                <img src="thirdpic.jpg" alt="Artist 3">
+                <p>Thomas Chauke</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About ShowMe</h2>
+        <p>ShowMe is the ultimate platform for musicians, DJs, dancers, instrumentalists, and performers across South Africa to showcase their talents, connect with fans, and grow their careers.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 ShowMe. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Menu Toggle -->
+    <script>
+        function toggleMenu() {
+            let navLinks = document.querySelector(".nav-links");
+            navLinks.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>

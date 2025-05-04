@@ -1,0 +1,246 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: row;
+    padding-left: 250px;
+    transition: padding 0.3s ease;
+    overflow-x: hidden;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #2f3542;
+    padding: 20px;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    background-color: #1d2430;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    width: calc(100% - 250px);
+    transition: margin-left 0.3s ease;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 32px;
+    color: #2f3542;
+}
+
+header p {
+    font-size: 18px;
+    color: #555;
+}
+
+/* Style the search bar and search criteria selector */
+#search-bar {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    width: 40%;
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease;
+    outline: none;
+}
+
+#search-bar:focus {
+    border-color: #3498db;
+}
+
+#search-criteria {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    background-color: #fff;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+    outline: none;
+    width: 25%;
+}
+
+#search-criteria:hover {
+    background-color: #3498db;
+    color: white;
+}
+
+#search-criteria:focus {
+    border-color: #3498db;
+    background-color: #2980b9;
+    color: white;
+}
+
+/* Feed Section */
+.feed-section {
+    margin-top: 30px;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Hamburger Menu - positioned at top-left */
+.hamburger-menu {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    background-color: #ccd6eb;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: none; /* Initially hidden */
+}
+
+.hamburger-menu span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px auto;
+}
+
+/* Responsive Design for Mobile Devices */
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding-left: 0;
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 10px;
+        text-align: center;
+        display: block;
+    }
+
+    .sidebar h2 {
+        font-size: 20px;
+    }
+
+    .sidebar ul li {
+        display: inline-block;
+        margin: 10px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 10px;
+        width: 100%;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    header p {
+        font-size: 16px;
+    }
+
+    #search-bar {
+        width: 80%;
+        margin-bottom: 10px;
+    }
+
+    #search-criteria {
+        width: 60%;
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .hamburger-menu {
+        display: block; /* Show hamburger on mobile */
+    }
+}
+
+/* Sidebar should be visible on larger screens */
+@media (min-width: 768px) {
+    .sidebar {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100vh;
+        background-color: #2f3542;
+        padding: 20px;
+        z-index: 1000;
+        transition: left 0.3s ease; /* Slide-in transition */
+    }
+}
+
+/* Hide sidebar on smaller screens initially */
+@media (max-width: 767px) {
+    .sidebar {
+        display: none; /* Initially hidden */
+        position: fixed;
+        top: 0;
+        left: -250px; /* Sidebar starts off-screen */
+        width: 250px;
+        height: 100vh;
+        background-color: #2f3542;
+        padding: 20px;
+        z-index: 1000;
+        transition: left 0.3s ease; /* Sliding effect */
+    }
+
+    /* Sidebar becomes visible when 'active' class is added */
+    .sidebar.active {
+        left: 0; /* Slide in */
+        display: block;
+    }
+}

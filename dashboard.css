@@ -1,0 +1,392 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    transition: background-color 0.3s ease;
+    overflow-x: hidden;  /* Prevent horizontal scrolling */
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: row;
+    padding-left: 250px;
+    transition: padding 0.3s ease;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #2f3542;
+    padding: 20px;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1000;
+    overflow-y: auto;
+    transition: all 0.3s ease;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ccd6eb;
+    transition: color 0.3s ease;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+    animation-delay: 0.3s;
+}
+
+.sidebar ul li:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.sidebar ul li:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.sidebar ul li:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    background-color: #1d2430;
+    transform: translateX(5px);
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    width: calc(100% - 250px);
+    transition: margin-left 0.3s ease, background-color 0.3s ease;
+}
+
+/* Profile Picture */
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.5s ease-in-out, box-shadow 0.3s ease;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.profile-picture:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Hamburger Menu - positioned at top-left */
+.hamburger-menu {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    background-color: #ccd6eb;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: none; /* Initially hidden */
+    transition: background-color 0.3s ease;
+}
+
+.hamburger-menu:hover {
+    background-color: #b1c6e1;
+}
+
+.hamburger-menu span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px auto;
+    transition: transform 0.3s ease;
+}
+
+/* Add Animation to Hamburger Menu */
+.hamburger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Bio Section Styling */
+.bio-section {
+    max-width: 600px;  /* Set a max-width to make it more compact */
+    margin: 0 auto;  /* Center the bio content */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Three-Dots Menu and Delete Button */
+.three-dots-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.three-dots-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.three-dots-btn:hover {
+    color: #1d2430;
+}
+
+.menu-options {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    min-width: 160px;
+    z-index: 1;
+    display: none;
+}
+
+.menu-options a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.menu-options a:hover {
+    background-color: #ddd;
+}
+
+.delete-post-btn {
+    color: red;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.delete-post-btn:hover {
+    background-color: #f2f2f2;
+}
+
+/* Adjusting on smaller screens */
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding-left: 0;
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 10px;
+        text-align: center;
+        display: block;
+    }
+
+    .sidebar h2 {
+        font-size: 20px;
+    }
+
+    .sidebar ul li {
+        display: inline-block;
+        margin: 10px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 10px;
+        width: 100%;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    header p {
+        font-size: 16px;
+    }
+
+    .hamburger-menu {
+        display: block; /* Show hamburger on mobile */
+    }
+
+    /* Bio Section on smaller screens */
+    .bio-section {
+        max-width: 90%; /* On small screens, set a max width of 90% */
+        padding: 15px;  /* Slightly reduce padding */
+    }
+}
+
+/* Sidebar should be visible on larger screens */
+@media (min-width: 768px) {
+    .sidebar {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100vh;
+        background-color: #2f3542;
+        padding: 20px;
+        z-index: 1000;
+        transition: left 0.3s ease;
+    }
+}
+
+/* Hide sidebar on smaller screens initially */
+@media (max-width: 767px) {
+    .sidebar {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100vh;
+        background-color: #2f3542;
+        padding: 20px;
+        z-index: 1000;
+        transition: left 0.3s ease;
+    }
+
+    .sidebar.active {
+        left: 0;
+        display: block;
+    }
+}
+
+/* Animations for Sidebar and Content */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+/* Post Creation Form */
+.create-post {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;  /* Ensure it takes up full width */
+    max-width: 600px;  /* Limit max width */
+    margin-left: auto;
+    margin-right: auto;  /* Center it horizontally */
+    box-sizing: border-box; /* Ensure box-sizing includes padding */
+}
+
+.create-post textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    resize: vertical;
+    box-sizing: border-box;  /* Ensure padding is included in width calculation */
+}
+
+/* Adjust for mobile screens */
+@media (max-width: 768px) {
+    .create-post {
+        padding: 15px;  /* Adjust padding */
+        width: 100%; /* Ensure it still fills the screen width */
+        max-width: 90%; /* Limit max width to 90% of screen width */
+        margin-left: 5%; /* Add margin to avoid it being too close to the edges */
+    }
+
+    .create-post textarea {
+        width: 100%;
+        height: 80px; /* Adjust height for mobile screens */
+    }
+
+    /* Ensure no horizontal overflow */
+    body, html {
+        overflow-x: hidden;
+    }
+}
+
+.create-post input[type="file"] {
+    margin-top: 10px;
+}
+
+.create-post button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #2f3542;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.create-post button:hover {
+    background-color: #1d2430;
+}
+
+/* Post Styles */
+.posts {
+    margin-top: 30px;
+}
+
+.posts .post {
+    background-color: #fff;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.posts .post img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+}

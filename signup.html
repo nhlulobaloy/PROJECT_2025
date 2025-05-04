@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - ShowMe</title>
+    <link rel="stylesheet" href="stylelogin.css">
+</head>
+<body>
+
+    <div class="login-container">
+        <form class="login-form" action="signup.php" method="POST">
+            <h1>Join ShowMe</h1>
+            <p>Create an account to showcase your talent!</p>
+
+            <label for="name">First Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your first name" required>
+
+            <label for="lastname">Last Name</label>
+            <input type="text" id="lastname" name="lastname" placeholder="Enter your last name" required>
+
+            <label for="number">Phone</label>
+            <input type="number" id="number" name="number" placeholder="Enter your phone Number" required>
+
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" placeholder="Enter your age" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <label for="talent">Your Talent</label>
+            <select id="talent" name="talent" required>
+                <option value="" disabled selected>Select your main talent</option>
+                <option value="instrumentalist">Instrumentalist</option>
+                <option value="dancer">Dancer</option>
+                <option value="musician">Musician</option>
+                <option value="dj">DJ</option>
+                <option value="producer">Producer</option>
+                <option value="other">Singer</option>
+                <option value="other">Song Writer</option>
+                <option value="other">Other</option>
+            </select>
+
+            <button type="submit">Sign Up</button>
+            
+            <p class="login-link">Already have an account? <a href="login.html">Login</a></p>
+        </form>
+        <a href="Index.html"><button type="Home">Home</button></a>
+    </div>
+
+    <!-- Link to the external JavaScript file -->
+    <script src="signup.js"></script>
+
+</body>
+</html>
