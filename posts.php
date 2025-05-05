@@ -1,6 +1,6 @@
 <?php
 include_once('db_connection.php');
-include_once('algorithm.php');  // Include the algorithm file for fetching posts based on user preferences
+include_once('algorithm.php');  // Inlude the algorithm file for fetching posts based on user preferences
 
 // Start the session only if it is not already started
 if (session_status() == PHP_SESSION_NONE) {
