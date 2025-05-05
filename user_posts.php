@@ -2,7 +2,7 @@
 include_once('db_connection.php');
 include_once('functions.php');
 
-// Start the session only if it is not already started
+// Start the session only if it is not already starte
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
